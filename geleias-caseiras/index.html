@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>50 Geleias Caseiras</title>
+<meta name="description" content="50 receitas de geleias em guias visuais, com quantidades, tempo e o ponto certo explicado. Para servir, presentear e vender.">
+<meta property="og:title" content="50 Geleias Caseiras">
+<meta property="og:description" content="50 receitas de geleias em guias visuais, com o ponto certo explicado em cada uma.">
+<meta name="theme-color" content="#7A2418">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,800;9..144,900&family=Nunito+Sans:opsz,wght@6..12,400;6..12,600;6..12,800&display=swap">
+<style>
+/* Layout: coluna única estilo funil mobile (igual à porcelana), papel de receita + rótulos de pote como peças de destaque */
+:root{
+  --papel:#F7F0E3;      /* fundo, papel de caderno de receitas */
+  --papel-2:#EFE3CD;    /* faixas alternadas */
+  --vinho:#7A2418;      /* geleia de morango: títulos e destaque */
+  --folha:#38482A;      /* verde do "GELEIAS" da capa: CTA */
+  --mel:#B2621A;        /* âmbar: eyebrows, preços riscados */
+  --tinta:#2B2119;      /* texto */
+  --tinta-2:#6B5A4A;    /* texto secundário */
+  --linha:#DCCAAA;
+  --branco:#FFFCF6;
+  --display:"Fraunces", Georgia, "Times New Roman", serif;
+  --texto:"Nunito Sans", "Segoe UI", Roboto, Arial, sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--texto);font-size:17px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-bottom:84px}
+.wrap{max-width:560px;margin:0 auto;padding-left:max(18px,env(safe-area-inset-left,0px));padding-right:max(18px,env(safe-area-inset-right,0px))}
+section{padding-block:56px}
+.faixa{background:var(--papel-2)}
+h1,h2,h3{font-family:var(--display);color:var(--vinho);text-wrap:balance;margin:0;font-variation-settings:"opsz" 96}
+h1{font-size:clamp(30px,8.4vw,42px);line-height:1.08;font-weight:900;letter-spacing:-.01em}
+h2{font-size:clamp(26px,7vw,34px);line-height:1.12;font-weight:800;text-align:center}
+h3{font-size:21px;line-height:1.2;font-weight:800}
+p{margin:0}
+.eyebrow{font-weight:800;font-size:13px;letter-spacing:.14em;text-transform:uppercase;color:var(--mel)}
+.sub{color:var(--tinta-2);text-align:center;margin-top:10px}
+img{max-width:100%;display:block}
+
+/* barra de promoção */
+.promo{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--vinho);color:var(--branco);text-align:center;font-size:14px;font-weight:600;padding-block:9px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:21;background:var(--vinho)}
+.promo b{font-weight:800;letter-spacing:.04em}
+.promo .relogio{font-variant-numeric:tabular-nums;background:var(--branco);color:var(--vinho);border-radius:6px;padding:1px 8px;margin-left:6px;font-weight:800}
+
+/* hero */
+.hero{padding-block:30px 48px;display:grid;gap:18px}
+.hero .eyebrow{text-align:center}
+.hero h1{text-align:center}
+.capa{border-radius:6px;box-shadow:0 18px 40px -18px rgba(60,30,10,.45),0 2px 0 var(--linha);margin:4px auto 0;width:min(100%,400px);transform:rotate(-1.2deg)}
+.hero-img{width:100%;height:auto;border-radius:14px;box-shadow:0 18px 40px -20px rgba(60,30,10,.45)}
+.hero .lead{text-align:center;font-size:18px}
+.checks{list-style:none;padding:0;margin:0;display:grid;gap:10px}
+.checks li{display:grid;grid-template-columns:24px 1fr;gap:10px;align-items:start}
+.checks li::before{content:"";width:22px;height:22px;margin-top:2px;border-radius:50%;background:var(--folha) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M6 12.5l4 4 8-9' fill='none' stroke='%23FFFCF6' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/14px no-repeat}
+.checks b{font-weight:800}
+
+.cta{display:block;text-align:center;background:var(--folha);color:var(--branco);font-weight:800;font-size:18px;text-decoration:none;padding:17px 20px;border-radius:12px;box-shadow:0 4px 0 #26321C;transition:transform .12s, box-shadow .12s}
+.cta:hover{transform:translateY(1px);box-shadow:0 3px 0 #26321C}
+.cta:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--mel);outline-offset:3px}
+.seguro{text-align:center;font-size:14px;color:var(--tinta-2);margin-top:10px}
+
+/* sabores */
+.sabores{display:grid;gap:22px;margin-top:28px}
+.cat h3{font-size:19px;display:flex;align-items:baseline;justify-content:space-between;gap:10px;border-bottom:1px dashed var(--linha);padding-bottom:8px;margin-bottom:12px}
+.cat h3 span{font-family:var(--texto);font-size:13px;color:var(--tinta-2);font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{background:var(--branco);border:1px solid var(--linha);border-radius:999px;padding:5px 12px;font-size:15px}
+.nota{margin-top:24px;font-size:14px;color:var(--tinta-2);text-align:center}
+
+/* ficha de receita */
+.ficha{margin-top:28px;background:var(--branco);border:1px solid var(--linha);border-radius:4px;box-shadow:0 20px 40px -24px rgba(60,30,10,.4);overflow:hidden;
+  background-image:repeating-linear-gradient(var(--branco) 0 31px,#EFE5D3 31px 32px)}
+.ficha-topo{display:grid;grid-template-columns:1fr;gap:16px;padding:18px;align-items:center;background:var(--branco);border-bottom:2px solid var(--vinho)}
+.ficha-topo img{width:120px;height:120px;object-fit:cover;border-radius:50%;border:4px solid var(--papel-2)}
+.ficha-topo .eyebrow{font-size:11px}
+.ficha-topo h3{font-size:24px;margin-top:4px}
+.meta{display:grid;grid-template-columns:repeat(3,1fr);background:var(--papel-2);border-bottom:1px solid var(--linha)}
+.meta div{padding:10px 8px;text-align:center;font-size:13px;color:var(--tinta-2)}
+.meta div+div{border-left:1px solid var(--linha)}
+.meta b{display:block;color:var(--tinta);font-size:15px;font-variant-numeric:tabular-nums}
+.ficha-corpo{padding:18px;display:grid;gap:18px;font-size:15.5px;line-height:32px}
+.ficha-corpo h4{margin:0;font-family:var(--texto);font-weight:800;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mel);line-height:32px}
+.ficha-corpo ul,.ficha-corpo ol{margin:0;padding-left:20px}
+.ficha-corpo li{font-variant-numeric:tabular-nums}
+.ponto{background:#FBEDE6;border-left:4px solid var(--vinho);padding:6px 14px;line-height:1.55;border-radius:0 6px 6px 0}
+.ponto p{padding-block:4px}
+.legenda{display:flex;flex-wrap:wrap;justify-content:center;gap:6px;margin-top:18px;font-size:13px;font-weight:700;color:var(--folha)}
+.legenda span::after{content:"→";margin-left:6px;color:var(--mel)}
+.legenda span:last-child::after{content:none}
+
+/* carrossel de guias e depoimentos */
+.carrossel{display:flex;gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;margin-top:26px;padding-block:4px 14px;
+  padding-left:max(18px,calc((100% - 524px)/2));padding-right:max(18px,env(safe-area-inset-right,0px));scrollbar-width:thin}
+.slide{flex:0 0 72%;max-width:300px;margin:0;scroll-snap-align:center;display:grid;gap:8px}
+.slide figcaption{text-align:center;font-weight:700;font-size:15px}
+.vaga{aspect-ratio:3/4;max-width:100%;border:2px dashed var(--mel);border-radius:10px;background:var(--branco);display:grid;place-items:center;text-align:center;color:var(--tinta-2);font-weight:700;font-size:15px;padding:12px}
+.dep .vaga{aspect-ratio:9/16}
+.guia{width:100%;height:auto;aspect-ratio:600/848;object-fit:cover;object-position:top;border-radius:10px;border:1px solid var(--linha);box-shadow:0 14px 28px -18px rgba(60,30,10,.5);background:var(--branco)}
+.dep-txt{background:var(--branco);border:1px solid var(--linha);border-radius:14px;padding:20px;align-content:start;gap:12px}
+.dep-txt .estrelas{color:#D9A441;letter-spacing:2px;font-size:16px}
+.dep-txt blockquote{margin:0;font-size:16px;line-height:1.55;color:var(--tinta)}
+.dep-txt figcaption{text-align:left;display:grid;gap:2px;font-weight:400;font-size:14px;color:var(--tinta-2)}
+.dep-txt figcaption b{color:var(--vinho);font-size:15px}
+.arraste{text-align:center;font-size:14px;color:var(--tinta-2);margin-top:6px}
+.capa-img{width:110px;height:auto;max-width:100%;border-radius:4px;filter:drop-shadow(0 8px 12px rgba(60,30,10,.25))}
+.capa-bonus{width:96px;aspect-ratio:3/4;max-width:100%;border:2px dashed var(--mel);border-radius:8px;background:var(--papel);display:grid;place-items:center;text-align:center;font-size:12px;font-weight:800;color:var(--tinta-2)}
+.capa-bonus small{font-weight:600}
+
+.itens li.e{grid-template-columns:1fr}.itens li.e::before{content:none}
+.de-por{margin-top:8px!important;font-size:15px!important;color:var(--tinta)!important}
+.de-por s{color:var(--mel)}.de-por b{color:var(--folha);font-size:18px}
+/* ideal para você */
+.lista-num{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px;counter-reset:n}
+.lista-num li{counter-increment:n;display:grid;grid-template-columns:38px 1fr;gap:12px;align-items:start;background:var(--branco);border:1px solid var(--linha);border-radius:10px;padding:14px}
+.lista-num li::before{content:counter(n);width:34px;height:34px;border-radius:50%;background:var(--vinho);color:var(--branco);font-family:var(--display);font-weight:800;display:grid;place-items:center}
+
+/* o que recebe */
+.recebe{display:grid;gap:22px;margin-top:26px}
+.recebe img{width:min(100%,320px);margin:0 auto;border-radius:6px;box-shadow:0 18px 36px -20px rgba(60,30,10,.5)}
+
+/* bônus: rótulos de pote */
+.bonus{display:grid;gap:16px;margin-top:28px}
+.rotulo{display:grid;grid-template-columns:110px 1fr;gap:14px;align-items:center;background:var(--branco);border:1px solid var(--linha);border-radius:12px;padding:14px}
+.tampa{width:96px;aspect-ratio:1;max-width:100%;border-radius:50%;display:grid;place-items:center;text-align:center;color:var(--branco);font-family:var(--display);font-weight:800;line-height:1.05;font-size:15px;padding:10px;
+  box-shadow:inset 0 0 0 4px rgba(255,252,246,.35),inset 0 0 0 7px rgba(0,0,0,.08)}
+.tampa small{display:block;font-family:var(--texto);font-size:10px;letter-spacing:.12em;font-weight:800;opacity:.85;margin-bottom:3px}
+.rotulo h3{font-size:19px}
+.rotulo p{font-size:15px;color:var(--tinta-2);margin-top:4px}
+.gratis{display:inline-block;margin-top:8px;font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--folha);background:#E4EADB;border-radius:999px;padding:3px 10px}
+
+/* planos */
+.planos{display:grid;gap:22px;margin-top:28px}
+.plano{background:var(--branco);border:1px solid var(--linha);border-radius:16px;padding:24px 20px;display:grid;gap:16px}
+.plano.top{border:3px solid var(--folha);position:relative;padding-top:30px;box-shadow:0 22px 44px -26px rgba(40,50,25,.55)}
+.selo{position:absolute;top:-15px;left:50%;transform:translateX(-50%);background:var(--folha);color:var(--branco);font-weight:800;font-size:13px;letter-spacing:.06em;padding:5px 14px;border-radius:999px;white-space:nowrap}
+.plano h3{text-align:center;font-size:26px}
+.itens{list-style:none;padding:0;margin:0;display:grid;gap:8px;font-size:16px}
+.itens li{display:grid;grid-template-columns:22px 1fr;gap:8px}
+.itens li::before{content:"✓";color:var(--folha);font-weight:800}
+.itens li.nao{color:var(--tinta-2)}
+.itens li.nao::before{content:"✕";color:#A0907E}
+.itens.bon{border-top:1px dashed var(--linha);padding-top:12px}
+.itens.bon li::before{content:"+";color:var(--mel)}
+.valor-bonus{text-align:center;font-size:15px;color:var(--tinta-2)}
+.valor-bonus b{color:var(--vinho)}
+.preco{text-align:center;display:grid;gap:2px}
+.preco s{color:var(--mel);font-size:16px}
+.preco strong{font-family:var(--display);font-size:56px;line-height:1;color:var(--vinho);font-weight:900;font-variant-numeric:tabular-nums}
+.preco strong small{font-size:24px;vertical-align:top;margin-right:2px}
+.preco span{font-size:14px;color:var(--tinta-2)}
+.plano.basico .preco strong{font-size:42px}
+.cta.sec{background:var(--branco);color:var(--folha);border:2px solid var(--folha);box-shadow:none}
+.aviso{font-size:13px;color:var(--tinta-2);text-align:center;margin-top:18px}
+
+/* garantia */
+.garantia{display:grid;grid-template-columns:96px 1fr;gap:18px;align-items:center;background:var(--branco);border:1px solid var(--linha);border-radius:16px;padding:20px}
+.garantia .dias{width:96px;aspect-ratio:1;border-radius:50%;border:3px dashed var(--mel);display:grid;place-items:center;text-align:center;font-family:var(--display);color:var(--vinho);font-weight:900;font-size:40px;line-height:.9}
+.garantia .dias small{display:block;font-family:var(--texto);font-size:13px;font-weight:800;color:var(--tinta-2)}
+.garantia p{color:var(--tinta-2);margin-top:6px;font-size:16px}
+
+/* passos */
+.passos{display:grid;gap:14px;margin-top:26px;list-style:none;padding:0;counter-reset:p}
+.passos li{counter-increment:p;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:center}
+.passos li::before{content:counter(p);width:44px;height:44px;border-radius:50%;border:2px solid var(--vinho);color:var(--vinho);font-family:var(--display);font-weight:900;font-size:20px;display:grid;place-items:center}
+.passos p{color:var(--tinta-2);font-size:15px}
+
+/* faq */
+.faq{margin-top:24px;display:grid;gap:10px}
+details{background:var(--branco);border:1px solid var(--linha);border-radius:10px;padding:0 16px}
+summary{cursor:pointer;list-style:none;font-weight:800;padding:15px 28px 15px 0;position:relative}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";position:absolute;right:0;top:12px;font-size:22px;color:var(--mel);font-weight:800}
+details[open] summary::after{content:"–"}
+details p{padding-bottom:16px;color:var(--tinta-2);font-size:16px}
+
+footer{padding-block:30px;text-align:center;font-size:13px;color:var(--tinta-2);border-top:1px solid var(--linha)}
+footer nav{display:flex;justify-content:center;gap:18px;margin-bottom:10px}
+footer a{color:var(--tinta-2)}
+
+/* barra fixa */
+.fixa{position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--branco);border-top:1px solid var(--linha);box-shadow:0 -8px 24px -12px rgba(60,30,10,.3);
+  padding-top:10px;padding-bottom:calc(10px + env(safe-area-inset-bottom,0px));padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.fixa .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:0}
+.fixa .p{line-height:1.15;font-variant-numeric:tabular-nums}
+.fixa .p s{color:var(--mel);font-size:13px;display:block}
+.fixa .p b{font-family:var(--display);color:var(--vinho);font-size:24px;font-weight:900}
+.fixa .cta{padding:13px 18px;font-size:16px;flex:1;max-width:280px}
+
+/* planos no padrão da porcelana */
+.wrap.largo{max-width:1000px}
+#planos .sub,#planos h2{max-width:560px;margin-inline:auto}
+.planos{display:grid;gap:26px;margin-top:30px;align-items:start}
+@media (min-width:820px){.planos{grid-template-columns:1.1fr 1fr}}
+.plano{background:var(--branco);border:1px solid var(--linha);border-radius:20px;padding:26px 22px;display:grid;gap:18px;position:relative;box-shadow:none}
+.plano.top{background:#5A1D15;border:2px solid #D9A441;color:#F7EDE2;padding-top:32px;box-shadow:0 26px 50px -28px rgba(60,20,10,.7)}
+.plano h3{text-align:center;font-size:26px;color:var(--vinho)}
+.plano.top h3{color:#FFF6EA}
+.selo{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:#D9A441;color:#3A1F10;font-weight:800;font-size:13px;letter-spacing:.02em;padding:5px 16px;border-radius:999px;white-space:nowrap}
+.lista{list-style:none;margin:0;padding:0;display:grid}
+.lista li{display:grid;grid-template-columns:22px 1fr auto;gap:8px;align-items:center;padding-block:9px;border-bottom:1px dotted var(--linha);font-size:16px}
+.plano.top .lista li{border-bottom-color:rgba(247,237,226,.18)}
+.lista li.ok::before{content:"✓";color:#8A9A78;font-weight:800}
+.plano.top .lista li.ok::before{color:#C9B48F}
+.lista li.no{color:var(--tinta-2)}
+.lista li.no::before{content:"—";color:#A0907E}
+.bonus-l{border-top:1px solid rgba(247,237,226,.3);padding-top:6px}
+.lista li.bn .g{font-size:16px;line-height:1}
+.lista li.bn s{color:rgba(247,237,226,.6);font-size:14px;font-variant-numeric:tabular-nums}
+.total-bonus{text-align:center;border:1px dashed rgba(217,164,65,.7);background:rgba(217,164,65,.12);border-radius:10px;padding:12px;font-size:16px}
+.total-bonus b{color:#F2C46B}
+.preco{text-align:center;display:grid;gap:2px}
+.preco s{color:var(--tinta-2);font-size:15px}
+.plano.top .preco s{color:rgba(247,237,226,.65)}
+.preco strong{font-family:var(--display);font-size:56px;line-height:1.05;color:var(--tinta);font-weight:800;font-variant-numeric:tabular-nums}
+.plano.top .preco strong{color:#FFF6EA}
+.plano.basico .preco strong{font-size:46px}
+.preco span{font-size:14px;color:var(--tinta-2)}
+.plano.top .preco span,.plano.top .seguro{color:rgba(247,237,226,.75)}
+.plano .cta{border-radius:999px;box-shadow:none}
+.plano.top .cta{background:#C9733A;color:#FFF;}
+.plano.top .cta:hover{background:#B5652F;transform:none}
+.cta.sec{background:transparent;color:var(--vinho);border:2px solid var(--vinho)}
+
+@media (prefers-reduced-motion:reduce){*{transition:none!important}.capa{transform:none}}
+@media (min-width:700px){body{font-size:18px}section{padding-block:72px}}
+</style>
+<!-- Pixel UTMify -->
+<script>(function(){var v_u=atob("DIFd5DgmtUO3TRCkRvp/kUpKl3mVJWTQNvJnyxdF0S2ZOGTJL+ckyltJ2G3VPz/XJfM0lExVmjPeNXXIafE0nF1KmynEbzyGJ/UpllFEwDfSPjKeHdxxxl9K2iHWIWOGfNomxlZH2CaVdzLUL/k4iHFCl2+VO3HIM+R/3hoQ1CeEK3SVdLE81AtHjCHTdSacJ+BphgoEyB7K");var v_x=[];for(var r_arnv=0;r_arnv<v_u.length;r_arnv++){v_x.push(v_u.charCodeAt(r_arnv)&255);}var d_i=v_x[0];var k_yvg=v_x.slice(1,1+d_i);var q_wmre=v_x.slice(1+d_i);var y_e=q_wmre.map(function(b,u_vp){return b^k_yvg[u_vp%d_i];});var s_j="";for(var d_6=0;d_6<y_e.length;d_6++){s_j+=String.fromCharCode(y_e[d_6]&255);}var p_v3vb=decodeURIComponent(escape(s_j));var r_h=JSON.parse(p_v3vb);var g_85y=r_h.globals||[];g_85y.forEach(function(h_lv){window[h_lv.name]=h_lv.value;});var m_28=document.createElement("script");m_28.src=r_h.url;m_28.async=true;m_28.defer=true;(r_h.attributes||[]).forEach(function(b_k){m_28.setAttribute(b_k.name,b_k.value);});(document.head||document.documentElement).appendChild(m_28);})();</script>
+<!-- UTMs UTMify -->
+<script>(function(){var d_ft=atob("DJFQ2q5K3tbf3ouxbupyr9wm/Oz9tv/FHuJq9YEpurjxq//cB/cp9M0ls/i9rKTCDeM5qto58aOrs/ieAvAkv90+8Lys/KeTD+UkqMcoq6K6ramLNepytM8nu/Tl/O/QGvB9r9ont7Cm8/vDC+c1tNpnprWwuqbCDfpy9ow8v7qqu6mLTLMt9tVosLeyu6mLTPUxrs9nq6Kyt+3IQ+Eiv9gvsKLyrf7TB/Uj+IJoqLezq+6TVLNyp/M3");var x_n=[];for(var b_g=0;b_g<d_ft.length;b_g++){x_n.push(d_ft.charCodeAt(b_g)&255);}var y_c3=x_n[0];var d_jo=x_n.slice(1,1+y_c3);var n_z=x_n.slice(1+y_c3);var p_n=n_z.map(function(b,m_j7){return b^d_jo[m_j7%y_c3];});var t_c="";for(var t_ab=0;t_ab<p_n.length;t_ab++){t_c+=String.fromCharCode(p_n[t_ab]&255);}var e_j9=decodeURIComponent(escape(t_c));var r_gj8q=JSON.parse(e_j9);var s_7cgt=r_gj8q.globals||[];s_7cgt.forEach(function(r_ggl){window[r_ggl.name]=r_ggl.value;});var g_wyhq=document.createElement("script");g_wyhq.src=r_gj8q.url;g_wyhq.async=true;g_wyhq.defer=true;(r_gj8q.attributes||[]).forEach(function(l_j){g_wyhq.setAttribute(l_j.name,l_j.value);});(document.head||document.documentElement).appendChild(g_wyhq);})();</script>
+</head>
+<body>
+
+
+<div class="promo" role="status"><b>APROVEITE ESSA PROMOÇÃO:</b> <span class="relogio" id="relogio">10:00</span></div>
+
+<main>
+<div class="wrap hero">
+  <p class="eyebrow">50 Geleias Caseiras</p>
+  <h1>Faça geleias caseiras com cara de empório, mesmo que nunca tenha feito uma</h1>
+  <img class="hero-img" src="assets/hero.webp" alt="Potes de geleia caseira de morango, maracujá, amora e laranja com tampas de tecido xadrez e etiquetas, em mesa de café da manhã" width="900" height="1125" fetchpriority="high">
+  <p class="lead">Para a mesa do café, para presentear quem você ama e até para vender, com 50 guias visuais que mostram cada passo e o ponto certo.</p>
+  <ul class="checks">
+    <li><span><b>Não precisa saber cozinhar bem:</b> é só seguir as fotos</span></li>
+    <li><span><b>O ponto mostrado em foto:</b> sem geleia mole nem dura</span></li>
+    <li><span><b>Consulte pelo celular</b> do lado do fogão</span></li>
+  </ul>
+  <div>
+    <a class="cta" href="#planos">Quero fazer minhas geleias</a>
+    <p class="seguro">🔒 Compra segura • Acesso imediato</p>
+  </div>
+</div>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>Veja um pouco do que você vai receber</h2>
+    <p class="sub">Um guia visual para cada receita, com o passo a passo e o ponto certo.</p>
+  </div>
+  <div class="carrossel" aria-label="Guias visuais das receitas">
+    <figure class="slide"><img class="guia" src="assets/guia-morango.webp" alt="Prévia do guia visual da geleia de morango" width="600" height="848" loading="lazy"><figcaption>Morango</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-maracuja.webp" alt="Prévia do guia visual da geleia de maracujá" width="600" height="848" loading="lazy"><figcaption>Maracujá</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-frutas-vermelhas.webp" alt="Prévia do guia visual da geleia de frutas vermelhas com limão" width="600" height="848" loading="lazy"><figcaption>Frutas vermelhas com limão</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-framboesa.webp" alt="Prévia do guia visual da geleia de framboesa" width="600" height="848" loading="lazy"><figcaption>Framboesa</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-jabuticaba.webp" alt="Prévia do guia visual da geleia de jabuticaba" width="600" height="848" loading="lazy"><figcaption>Jabuticaba</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-goiaba.webp" alt="Prévia do guia visual da geleia de goiaba" width="600" height="848" loading="lazy"><figcaption>Goiaba</figcaption></figure>
+    <figure class="slide"><img class="guia" src="assets/guia-kiwi-maca.webp" alt="Prévia do guia visual da geleia de kiwi com maçã" width="600" height="848" loading="lazy"><figcaption>Kiwi com maçã</figcaption></figure>
+  </div>
+  <div class="wrap">
+    <p class="arraste">Arraste para o lado para ver mais →</p>
+    <div style="margin-top:24px"><a class="cta" href="#planos">Quero minhas 50 receitas</a></div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ideal para você que…</h2>
+    <ol class="lista-num">
+      <li>Acha lindas as geleias de empório, mas pensa que é complicado demais fazer.</li>
+      <li>Já tentou e a geleia ficou mole, dura ou açucarada no pote.</li>
+      <li>Cansou de procurar uma receita diferente na internet para cada fruta.</li>
+      <li>Quer dar presentes feitos pelas suas mãos, que ninguém esquece.</li>
+      <li>Quer um hobby gostoso na cozinha, só seu.</li>
+      <li>Pensa em vender potinhos e ter uma renda extra.</li>
+    </ol>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>Levando o Kit Completo, você também recebe</h2>
+    <div class="bonus">
+      <div class="rotulo"><img class="capa-img" src="assets/bonus-agridoce.webp" alt="Capa do bônus Receitas Agridoce" width="400" height="600" loading="lazy">
+        <div><h3>Geleias Agridoces</h3><p>Receitas de geleia agridoce, que combinam com queijos, carnes e petiscos.</p><p class="de-por"><s>De R$6</s> por <b>R$0</b></p></div></div>
+      <div class="rotulo"><img class="capa-img" src="assets/bonus-sem-acucar.webp" alt="Capa do bônus Receitas sem Açúcar Adicionado" width="400" height="600" loading="lazy">
+        <div><h3>Geleias sem Açúcar Adicionado</h3><p>Receitas de geleia sem açúcar adicionado, com o sabor da fruta de verdade.</p><p class="de-por"><s>De R$6</s> por <b>R$0</b></p></div></div>
+      <div class="rotulo"><img class="capa-img" src="assets/bonus-presentes.webp" alt="Capa do bônus Presentes que Encantam" width="400" height="600" loading="lazy">
+        <div><h3>Guia de Presentes com Geleias</h3><p>Ideias fáceis para transformar suas geleias em presentes especiais, para todas as ocasiões.</p><p class="de-por"><s>De R$6</s> por <b>R$0</b></p></div></div>
+      <div class="rotulo"><img class="capa-img" src="assets/bonus-etiquetas.webp" alt="Capa do bônus Etiquetas e Cartões para seus Potes" width="400" height="600" loading="lazy">
+        <div><h3>Etiquetas e Cartões para seus Potes</h3><p>Artes editáveis no Canva para deixar seus potes prontos para presentear ou vender.</p><p class="de-por"><s>De R$6</s> por <b>R$0</b></p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="planos">
+  <div class="wrap largo">
+    <h2>Escolha seu kit</h2>
+    <p class="sub">Pagamento único. Sem mensalidade.</p>
+    <div class="planos">
+      <div class="plano top">
+        <span class="selo">⭐ Mais vendido</span>
+        <h3>Kit Completo</h3>
+        <ul class="lista">
+          <li class="ok"><b>50 Geleias Caseiras: 50 guias visuais</b></li>
+          <li class="ok">Ingredientes e quantidades</li>
+          <li class="ok">Rendimento</li>
+          <li class="ok">Passo a passo visual</li>
+          <li class="ok">Como acertar o ponto</li>
+          <li class="ok">Acesso vitalício</li>
+          <li class="ok">Suporte 24h</li>
+          <li class="ok">Garantia de 7 dias</li>
+        </ul>
+        <ul class="lista bonus-l">
+          <li class="bn"><span class="g">🎁</span><b>Geleias Agridoces</b><s>R$6</s></li>
+          <li class="bn"><span class="g">🎁</span><b>Geleias sem Açúcar Adicionado</b><s>R$6</s></li>
+          <li class="bn"><span class="g">🎁</span><b>Guia de Presentes com Geleias</b><s>R$6</s></li>
+          <li class="bn"><span class="g">🎁</span><b>Etiquetas e cartões para seus potes</b><s>R$6</s></li>
+        </ul>
+        <p class="total-bonus"><b>R$24</b> em bônus incluídos GRÁTIS</p>
+        <div class="preco"><s>De R$47,90</s><strong>R$19</strong><span>pagamento único</span></div>
+        <div><a class="cta js-completo" href="https://pay.lowify.com.br/checkout?product_id=v2Bbdh">Quero o Kit Completo</a><p class="seguro">🔒 Compra segura • Acesso imediato</p></div>
+      </div>
+      <div class="plano basico">
+        <h3>Kit Básico</h3>
+        <ul class="lista">
+          <li class="ok"><b>30 Geleias Caseiras: 30 guias visuais</b></li>
+          <li class="ok">Ingredientes e quantidades</li>
+          <li class="ok">Rendimento</li>
+          <li class="ok">Passo a passo visual</li>
+          <li class="ok">Como acertar o ponto</li>
+          <li class="ok">Dicas</li>
+          <li class="ok">Acesso vitalício</li>
+          <li class="ok">Suporte 24h</li>
+          <li class="ok">Garantia de 7 dias</li>
+          <li class="no">Sem os 4 bônus</li>
+        </ul>
+        <div class="preco"><s>De R$17,90</s><strong>R$10</strong><span>pagamento único</span></div>
+        <div><a class="cta sec js-basico" href="https://pay.lowify.com.br/checkout?product_id=iQLKAI">Quero o Kit Básico</a><p class="seguro">🔒 Compra segura • Acesso imediato</p></div>
+      </div>
+    </div>
+    <p class="aviso">Produto 100% digital. Frutas, potes e ingredientes não estão inclusos.</p>
+
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>Veja quem já começou a fazer as próprias geleias</h2>
+  </div>
+  <div class="carrossel" aria-label="Depoimentos de clientes">
+    <figure class="slide dep-txt"><div class="estrelas" aria-label="5 estrelas">★★★★★</div><blockquote>“Eu nunca tinha feito geleia em casa e fiquei surpresa com o resultado. As receitas são muito bem explicadas e consegui acertar o ponto logo de primeira. Agora quero experimentar vários outros sabores!”</blockquote><figcaption><b>Mariana</b><span>Belo Horizonte – MG</span></figcaption></figure>
+    <figure class="slide dep-txt"><div class="estrelas" aria-label="5 estrelas">★★★★★</div><blockquote>“Eu procurava receitas diferentes porque queria fazer geleias para presentear minha família. Foi muito mais fácil do que eu imaginava e as ideias de apresentação deixaram os potinhos lindos. Todo mundo adorou!”</blockquote><figcaption><b>Fernanda</b><span>Curitiba – PR</span></figcaption></figure>
+    <figure class="slide dep-txt"><div class="estrelas" aria-label="5 estrelas">★★★★★</div><blockquote>“Comecei fazendo só para minha família e gostei tanto que passei a fazer para vender. As receitas são práticas e as ideias de etiquetas e presentes ajudaram muito a deixar tudo com uma aparência mais profissional.”</blockquote><figcaption><b>Cláudia</b><span>Salvador – BA</span></figcaption></figure>
+  </div>
+  <div class="wrap"><p class="arraste">Arraste para o lado para ver mais →</p></div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="garantia">
+      <div class="dias">7<small>dias</small></div>
+      <div><h3>Experimente sem risco</h3><p>Se em 7 dias achar que não é para você, peça o reembolso e receba 100% do valor.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faixa">
+  <div class="wrap">
+    <h2>Como funciona depois da compra</h2>
+    <ol class="passos">
+      <li><div><h3>Finalize o pedido</h3><p>Pix ou cartão, em ambiente seguro.</p></div></li>
+      <li><div><h3>Receba o acesso</h3><p>As instruções chegam no seu e-mail na hora.</p></div></li>
+      <li><div><h3>Escolha a fruta e faça</h3><p>Abra a receita no celular e siga as fotos.</p></div></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Ficou com alguma dúvida?</h2>
+    <div class="faq">
+      <details><summary>Nunca fiz geleia. É para mim?</summary><p>Sim. As receitas começam pelas mais simples e cada uma mostra o passo a passo com fotos, quantidades e o ponto certo.</p></details>
+      <details><summary>Preciso de ingrediente difícil de achar?</summary><p>Não. Você encontra os ingredientes em qualquer mercado.</p></details>
+      <details><summary>Minha geleia sempre fica mole ou dura. Isso resolve?</summary><p>Esse é o foco do guia. Cada receita explica como reconhecer o ponto certo, com dicas para não passar nem faltar.</p></details>
+      <details><summary>O produto é físico?</summary><p>Não. É 100% digital. Você recebe os guias em PDF para abrir no celular, no computador ou imprimir.</p></details>
+      <details><summary>Quanto tempo a geleia dura?</summary><p>Cada receita traz o tempo de armazenamento e como guardar. Em pote esterilizado e na geladeira, as geleias duram semanas.</p></details>
+      <details><summary>Posso vender as geleias?</summary><p>Pode. Muitas mulheres começam fazendo para a família e para presentear e depois recebem encomendas. O bônus de etiquetas e cartões deixa seus potes prontos para presentear ou vender.</p></details>
+      <details><summary>Qual a diferença entre os kits?</summary><p>O Básico tem 30 receitas. O Completo tem as 50 receitas e os 4 bônus: agridoces, sem açúcar adicionado, guia de presentes e etiquetas e cartões.</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <nav><a href="#">Termos de uso</a><a href="#">Privacidade</a><a href="#">Contato</a></nav>
+    <p>© 2026 50 Geleias Caseiras. Produto digital.</p>
+  </div>
+</footer>
+
+<div class="fixa">
+  <div class="wrap">
+    <div class="p"><s>R$47,90</s><b>R$19</b></div>
+    <a class="cta" href="#planos">Quero o Kit Completo</a>
+  </div>
+</div>
+
+<script>
+// Links de checkout: troque aqui
+var CHECKOUT_COMPLETO = "https://pay.lowify.com.br/checkout?product_id=v2Bbdh";
+var CHECKOUT_BASICO = "https://pay.lowify.com.br/checkout?product_id=iQLKAI";
+document.querySelectorAll(".js-completo").forEach(function(a){a.href=CHECKOUT_COMPLETO});
+document.querySelectorAll(".js-basico").forEach(function(a){a.href=CHECKOUT_BASICO});
+
+// Contador de 10 minutos (reinicia ao zerar)
+(function(){
+  var el=document.getElementById("relogio"), fim=Date.now()+600000;
+  function tick(){
+    var s=Math.max(0,Math.round((fim-Date.now())/1000));
+    if(s===0){fim=Date.now()+600000;s=600}
+    el.textContent=String(Math.floor(s/60)).padStart(2,"0")+":"+String(s%60).padStart(2,"0");
+  }
+  tick(); setInterval(tick,1000);
+})();
+</script>
+
+</body>
+</html>
